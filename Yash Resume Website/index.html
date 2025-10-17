@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Tanna - Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --section-padding: 80px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .download-cv-btn {
+            background: linear-gradient(135deg, #1a73e8, #34a853) !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            margin-left: 20px !important;
+        }
+
+        .download-cv-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4) !important;
+        }
+
+        .download-cv-btn::after {
+            display: none !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8 0%, #34a853 100%);
+            padding: var(--section-padding) 5%;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract Background Shapes */
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -100px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -50px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 10%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            right: 15%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .shape-5 {
+            width: 250px;
+            height: 250px;
+            top: 20%;
+            right: 20%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content .subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: var(--section-padding) 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+
+        .certifications .section-title {
+            color: #333;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: white;
+        }
+
+        .projects .section-title {
+            color: #667eea;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), -1px -1px 2px rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.9);
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .projects .container {
+            text-align: center;
+        }
+
+        .projects .section-title::after {
+            background-color: #667eea;
+        }
+
+        .certifications .section-title::after {
+            background-color: #333;
+        }
+
+        /* About Section - Personal Theme */
+        .about {
+            background-image: url('about-me.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+
+
+        .about-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .about .shape {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .about .shape-1 {
+            width: 250px;
+            height: 250px;
+            top: -100px;
+            right: -50px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .about .shape-2 {
+            width: 180px;
+            height: 180px;
+            bottom: -80px;
+            left: -40px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .about .shape-3 {
+            width: 120px;
+            height: 120px;
+            top: 40%;
+            left: 5%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .about .shape-4 {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            right: 10%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .about .shape-5 {
+            width: 200px;
+            height: 200px;
+            top: 30%;
+            right: 30%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .info-list {
+            list-style: none;
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list li i {
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .info-list li strong {
+            min-width: 150px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .info-list li span {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Skills Section - Technology Theme */
+        .skills {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .skills-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .skills .shape {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skills .shape-1 {
+            width: 280px;
+            height: 280px;
+            top: -120px;
+            right: -80px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skills .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -90px;
+            left: -60px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .skills .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 8%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .skills .shape-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 25%;
+            right: 12%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .skills .shape-5 {
+            width: 220px;
+            height: 220px;
+            top: 25%;
+            right: 25%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-card h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .skill-level {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        /* Education Section - Academic Theme */
+        .education {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            position: relative;
+        }
+
+        .education-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .education .shape {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .education .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -130px;
+            right: -70px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .education .shape-2 {
+            width: 220px;
+            height: 220px;
+            bottom: -100px;
+            left: -50px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .education .shape-3 {
+            width: 160px;
+            height: 160px;
+            top: 35%;
+            left: 7%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .education .shape-4 {
+            width: 110px;
+            height: 110px;
+            bottom: 20%;
+            right: 15%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .education .shape-5 {
+            width: 240px;
+            height: 240px;
+            top: 20%;
+            right: 20%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: white;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid #3498db;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .timeline-content .date {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+        }
+
+        /* Projects Section - Creative Theme */
+        .projects {
+            background-image: url('projects.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+
+
+        .projects-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .projects .shape {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .projects .shape-1 {
+            width: 320px;
+            height: 320px;
+            top: -140px;
+            right: -90px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .projects .shape-2 {
+            width: 240px;
+            height: 240px;
+            bottom: -110px;
+            left: -70px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .projects .shape-3 {
+            width: 170px;
+            height: 170px;
+            top: 30%;
+            left: 6%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .projects .shape-4 {
+            width: 120px;
+            height: 120px;
+            bottom: 15%;
+            right: 18%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .projects .shape-5 {
+            width: 260px;
+            height: 260px;
+            top: 15%;
+            right: 15%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-info {
+            flex: 1;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .project-info p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            height: fit-content;
+            align-self: center;
+        }
+
+        .project-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .project-card {
+                flex-direction: column !important;
+                text-align: center;
+                padding: 25px;
+            }
+            
+            .project-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Certifications Section - Achievement Theme */
+        .certifications {
+            background-color: white;
+            position: relative;
+        }
+
+
+
+        .certifications-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .certifications .shape {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .certifications .shape-1 {
+            width: 290px;
+            height: 290px;
+            top: -120px;
+            right: -80px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .certifications .shape-2 {
+            width: 210px;
+            height: 210px;
+            bottom: -90px;
+            left: -60px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .certifications .shape-3 {
+            width: 140px;
+            height: 140px;
+            top: 45%;
+            left: 9%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .certifications .shape-4 {
+            width: 90px;
+            height: 90px;
+            bottom: 35%;
+            right: 14%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .certifications .shape-5 {
+            width: 230px;
+            height: 230px;
+            top: 35%;
+            right: 35%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: #FFA500;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .cert-icon::after {
+            content: '★';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.2rem;
+            color: #FFD700;
+        }
+
+        .cert-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .cert-card p {
+            color: var(--gray);
+        }
+
+        /* Contact Section - Communication Theme */
+        .contact {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            position: relative;
+        }
+
+        .contact-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .contact .shape {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact .shape-1 {
+            width: 310px;
+            height: 310px;
+            top: -130px;
+            right: -85px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact .shape-2 {
+            width: 230px;
+            height: 230px;
+            bottom: -100px;
+            left: -65px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .contact .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 8%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .contact .shape-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 25%;
+            right: 16%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .contact .shape-5 {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 30%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #4facfe;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(79, 172, 254, 0.1);
+            color: #4facfe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 20px;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .contact-text p {
+            color: var(--gray);
+        }
+
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(0, 242, 254, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #4facfe;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            background-color: #4facfe;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #0099cc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 5%;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">YT</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="Yash_Tanna_Resume.pdf" download class="download-cv-btn"><i class="fas fa-download"></i> Download CV</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Abstract Background Shapes -->
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Yash Tanna</h1>
+                <div class="subtitle">Django Designer</div>
+                <p>I create beautiful, functional web applications with Django and modern web technologies. Passionate about clean code and user-centered design.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Personal Theme -->
+    <section id="about" class="about section">
+        <div class="about-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="profile-photo.jpeg" alt="Yash Tanna">
+                </div>
+                <div class="about-text">
+                    <h3>Personal Information</h3>
+                    <p>I'm a passionate Django Designer with expertise in Python programming and web development. I enjoy creating intuitive user interfaces and solving complex problems with elegant solutions.</p>
+                    
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-user"></i>
+                            <strong>Name:</strong>
+                            <span>Yash Tanna</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <strong>Phone:</strong>
+                            <span>+91 8454873888</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <strong>Email:</strong>
+                            <span>tannayash2456@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <strong>Address:</strong>
+                            <span>6/303 Raj Ratna Park, Brahmand, Ghod Bunder Road, Thane West 400607</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - Technology Theme -->
+    <section id="skills" class="skills section">
+        <div class="skills-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3><i class="fab fa-python"></i> Python Programming</h3>
+                    <p>Proficient in Python programming with strong understanding of data structures, algorithms, and object-oriented programming.</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> Basics of Django</h3>
+                    <p>Experience with Django framework for building robust web applications with MVC architecture.</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fab fa-html5"></i> HTML</h3>
+                    <p>Strong knowledge of HTML5 for creating structured and semantic web pages.</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fab fa-css3-alt"></i> CSS</h3>
+                    <p>Proficient in CSS3 for styling web pages with responsive design and animations.</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-paint-brush"></i> UI/UX Design</h3>
+                    <p>Skilled in creating user-friendly interfaces with focus on user experience and design principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section - Academic Theme -->
+    <section id="education" class="education section">
+        <div class="education-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>BSC Computer Science</h3>
+                        <div class="date">2023 - Ongoing</div>
+                        <p>Satish Pradhan Dnyanasadhana College</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Higher Secondary Certificate</h3>
+                        <div class="date">2021 - 2023</div>
+                        <p>Satish Pradhan Dnyanasadhana College</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Secondary School Certificate</h3>
+                        <div class="date">2021</div>
+                        <p>Sri Ma Vidyalaya</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Creative Theme -->
+    <section id="projects" class="projects section">
+        <div class="projects-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Monthly Expense Tracker Website</h3>
+                        <p>A comprehensive web application for personal finance management featuring expense tracking, PDF/Excel export capabilities, detailed data visualization, and smart budget management with automated notifications.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Chart.js</span>
+                        </div>
+                    </div>
+                    <a href="expense-tracker-details.html" class="project-btn" target="_blank">About Project</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Voice Assistant</h3>
+                        <p>An intelligent voice-controlled assistant built with Python that automates system tasks, manages files, controls media playback, and adjusts system settings through natural language voice commands.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Speech Recognition</span>
+                            <span class="tag">AI/ML</span>
+                        </div>
+                    </div>
+                    <a href="ai-voice-assistant-details.html" class="project-btn" target="_blank">About Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section - Achievement Theme -->
+    <section id="certifications" class="certifications section">
+        <div class="certifications-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-container">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML Basic to Advanced</h3>
+                    <p>Comprehensive course covering HTML fundamentals to advanced techniques for modern web development.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Asteroids Game Python</h3>
+                    <p>Hands-on project building the classic Asteroids game using Python and Pygame library.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-space-shuttle"></i>
+                    </div>
+                    <h3>Space Invaders Game Python</h3>
+                    <p>Project-based course developing the Space Invaders game with Python and game development concepts.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS for Beginners</h3>
+                    <p>Introduction to CSS styling, responsive design, and modern CSS techniques for web development.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Canva Course</h3>
+                    <p>Comprehensive training in graphic design and visual content creation using Canva platform.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Snake Game Using Python</h3>
+                    <p>Hands-on project developing the classic Snake game using Python programming and game development principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Communication Theme -->
+    <section id="contact" class="contact section">
+        <div class="contact-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+91 8454873888</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>tannayash2456@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>6/303 Raj Ratna Park, Brahmand Ghod Bunder Road, Thane West 400607</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2023 Yash Tanna. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
