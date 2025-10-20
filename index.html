@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yash Tanna - Professional Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="prefetch" href="expense-tracker-details.html">
+    <link rel="prefetch" href="ai-voice-assistant-details.html">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" as="style">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap');
         
@@ -50,6 +53,20 @@
             padding: 15px 5%;
             max-width: 1400px;
             margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 8px 3%;
+                justify-content: center;
+                flex-direction: column;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
         }
 
         .logo {
@@ -1445,6 +1462,7 @@
             
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .timeline::after {
@@ -1472,19 +1490,210 @@
 
         @media (max-width: 768px) {
             .nav-links {
+                display: flex;
+                overflow-x: auto;
+                width: 100%;
+                margin-top: 8px;
+                padding: 0;
+                gap: 8px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .nav-links::-webkit-scrollbar {
                 display: none;
             }
             
+            .nav-links li {
+                margin: 0;
+                flex-shrink: 0;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+                border-radius: 15px;
+                background: rgba(255,255,255,0.1);
+                white-space: nowrap;
+                display: block;
+            }
+            
+            .hero {
+                padding: 60px 3% 40px;
+                min-height: 80vh;
+            }
+            
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 15px;
             }
             
             .hero-content .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+                padding: 0 10px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+                width: 200px;
+                text-align: center;
+            }
+            
+            .section {
+                padding: 50px 3%;
             }
             
             .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .about-image img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .about-text h3 {
+                font-size: 1.5rem;
+            }
+            
+            .info-list {
+                padding: 15px;
+            }
+            
+            .info-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 10px;
+            }
+            
+            .info-list li i {
+                margin-bottom: 5px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .skill-card {
+                padding: 20px;
+            }
+            
+            .timeline {
+                max-width: 100%;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+                padding-right: 15px;
+            }
+            
+            .timeline-item::after {
+                left: 8px;
+            }
+            
+            .timeline-content {
+                padding: 15px 20px;
+            }
+            
+            .projects-container {
+                max-width: 100%;
+            }
+            
+            .project-card {
+                padding: 20px;
+                gap: 20px;
+            }
+            
+            .project-icon {
+                width: 80px;
+                height: 80px;
                 font-size: 2rem;
+            }
+            
+            .project-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .project-info p {
+                font-size: 0.9rem;
+            }
+            
+            .project-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .certifications-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .cert-card {
+                padding: 20px;
+            }
+            
+            .cert-icon {
+                font-size: 2.5rem;
+            }
+            
+            .cert-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .cert-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .about-image img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .project-card {
+                padding: 15px;
+            }
+            
+            .project-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .cert-card {
+                padding: 15px;
             }
         }
     </style>
@@ -1679,7 +1888,7 @@
                             <span class="tag">Chart.js</span>
                         </div>
                     </div>
-                    <a href="expense-tracker-details.html" class="project-btn" target="_blank">About Project</a>
+                    <a href="expense-tracker-details.html" class="project-btn">About Project</a>
                 </div>
                 <div class="project-card">
                     <div class="project-icon">
@@ -1694,7 +1903,7 @@
                             <span class="tag">AI/ML</span>
                         </div>
                     </div>
-                    <a href="ai-voice-assistant-details.html" class="project-btn" target="_blank">About Project</a>
+                    <a href="ai-voice-assistant-details.html" class="project-btn">About Project</a>
                 </div>
             </div>
         </div>
