@@ -56,16 +56,104 @@
             flex-wrap: wrap;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav-left {
+            display: none;
+        }
+
+        .mobile-cv {
+            display: none;
+        }
+
+        .mobile-logo {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 8px 3%;
-                justify-content: center;
-                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .desktop-logo {
+                display: none;
+            }
+            
+            .mobile-logo {
+                display: block;
+            }
+            
+            .mobile-nav-left {
+                display: flex;
+                align-items: center;
+                gap: 15px;
             }
             
             .logo {
                 font-size: 1.2rem;
-                margin-bottom: 5px;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .mobile-cv {
+                display: inline-block;
+                padding: 6px 12px !important;
+                font-size: 0.8rem !important;
+                margin-left: 0 !important;
+            }
+            
+            .desktop-cv {
+                display: none;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 250px;
+                height: calc(100vh - 60px);
+                background-color: var(--card-bg);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+                padding: 10px 20px;
+                border-radius: 5px;
+                display: block;
+                text-align: center;
+                width: 200px;
             }
         }
 
@@ -121,6 +209,7 @@
             font-weight: 500 !important;
             transition: all 0.3s ease !important;
             margin-left: 20px !important;
+            text-decoration: none !important;
         }
 
         .download-cv-btn:hover {
@@ -1489,35 +1578,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: flex;
-                overflow-x: auto;
-                width: 100%;
-                margin-top: 8px;
-                padding: 0;
-                gap: 8px;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            
-            .nav-links::-webkit-scrollbar {
-                display: none;
-            }
-            
-            .nav-links li {
-                margin: 0;
-                flex-shrink: 0;
-            }
-            
-            .nav-links a {
-                font-size: 0.8rem;
-                padding: 6px 10px;
-                border-radius: 15px;
-                background: rgba(255,255,255,0.1);
-                white-space: nowrap;
-                display: block;
-            }
-            
             .hero {
                 padding: 60px 3% 40px;
                 min-height: 80vh;
@@ -1702,16 +1762,25 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="#" class="logo">YT</a>
-            <ul class="nav-links">
+            <a href="#" class="logo desktop-logo">YT</a>
+            <div class="mobile-nav-left">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="#" class="logo mobile-logo">YT</a>
+            </div>
+            <a href="YASH RESUME.pdf" download class="download-cv-btn mobile-cv"><i class="fas fa-download"></i> Download CV</a>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#certifications">Certifications</a></li>
-                <li><a href="YASH RESUME.pdf" download class="download-cv-btn"><i class="fas fa-download"></i> Download CV</a></li>
             </ul>
+            <a href="YASH RESUME.pdf" download class="download-cv-btn desktop-cv"><i class="fas fa-download"></i> Download CV</a>
         </nav>
     </header>
 
@@ -1732,7 +1801,7 @@
                 <div class="subtitle">Django Designer</div>
                 <p>I create beautiful, functional web applications with Django and modern web technologies. Passionate about clean code and user-centered design.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    <!-- <a href="#contact" class="btn btn-primary">Contact Me</a> -->
                     <a href="#projects" class="btn btn-secondary">View Projects</a>
                 </div>
             </div>
@@ -2033,6 +2102,21 @@
                 }
             });
         }, observerOptions);
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
 
         // Observe Hero, About, Skills, Education, Projects, Certifications section elements and titles
         document.addEventListener('DOMContentLoaded', () => {
