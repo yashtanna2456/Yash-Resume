@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BillPro - Project Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --dark: #202124;
+            --light: #f0f2f5;
+            --gray: #5f6368;
+        }
+
+        html {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        /* Fixed Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .back-btn.scrolled {
+            background: rgba(26, 115, 232, 0.9);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 5px 25px rgba(26, 115, 232, 0.4);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .back-btn i {
+            transition: transform 0.3s;
+        }
+
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0d47a1 0%, #1a73e8 30%, #34a853 70%, #1b5e20 100%);
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(26, 115, 232, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(52, 168, 83, 0.3) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Floating Shapes */
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -50px;
+            animation: shapeFloat1 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -30px;
+            animation: shapeFloat2 10s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 15%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: shapeFloat3 12s ease-in-out infinite;
+        }
+
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 25%;
+            right: 20%;
+            border-radius: 20px;
+            animation: shapeFloat4 9s ease-in-out infinite;
+        }
+
+        @keyframes shapeFloat1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        @keyframes shapeFloat2 {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.1); }
+        }
+
+        @keyframes shapeFloat3 {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(15px); }
+        }
+
+        @keyframes shapeFloat4 {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(225deg) translateY(-25px); }
+        }
+
+        /* Hero Grid - Fixed for mobile */
+        .hero-grid {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35%;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: bottom center;
+            z-index: 1;
+            mask-image: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .project-icon {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.2),
+                -8px 8px 0px rgba(26, 115, 232, 0.3),
+                -16px 16px 0px rgba(52, 168, 83, 0.2);
+            animation: iconFloat 4s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
+
+        .project-icon:hover {
+            transform: rotateY(-10deg) rotateX(5deg) translateY(-5px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.3),
+                -12px 12px 0px rgba(26, 115, 232, 0.4),
+                -24px 24px 0px rgba(52, 168, 83, 0.3);
+        }
+
+        .project-icon i {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 0.8s ease forwards 0.2s;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .hero-content > p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 0.8s ease forwards 0.4s;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Content Grid */
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            min-width: 0;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+            max-width: 100%;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .content-card:hover::before {
+            opacity: 1;
+        }
+
+        .content-card.tilting {
+            transition: box-shadow 0.1s ease !important;
+        }
+
+        .content-card.tilt-reset {
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out !important;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .section-title .title-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+
+        /* Overview Text */
+        .overview-text {
+            color: var(--gray);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            background: var(--light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .feature-list li:hover {
+            background: white;
+            border-color: var(--primary);
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(26, 115, 232, 0.12);
+        }
+
+        .feature-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-list li i {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(26, 115, 232, 0.25);
+        }
+
+        /* Subsection */
+        .subsection {
+            margin-bottom: 25px;
+        }
+
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+
+        .subsection h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .subsection h4::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .subsection p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 0.98rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .subsection p strong {
+            color: var(--primary);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            min-width: 0;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            will-change: transform;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .sidebar-card.tilting {
+            transition: box-shadow 0.1s ease !important;
+        }
+
+        .sidebar-card.tilt-reset {
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out !important;
+        }
+
+        .sidebar-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sidebar-title i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* Info Items */
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            background: var(--light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: white;
+            box-shadow: 0 5px 20px rgba(26, 115, 232, 0.1);
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+
+        .info-content {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .info-content strong {
+            display: block;
+            color: var(--gray);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .info-content span {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Tech Stack Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            padding: 8px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 25px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(26, 115, 232, 0.25);
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(26, 115, 232, 0.4);
+        }
+
+        /* Achievement List */
+        .achievement-list {
+            list-style: none;
+        }
+
+        .achievement-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light);
+            color: var(--dark);
+            transition: all 0.3s ease;
+            font-size: 0.93rem;
+            line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .achievement-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .achievement-list li:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .achievement-list li i {
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            background: linear-gradient(135deg, var(--secondary), #00c853);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-right.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 35px rgba(26, 115, 232, 0.5);
+        }
+
+        /* Responsive - Tablet */
+        @media (max-width: 1024px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 5% 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content > p {
+                font-size: 1rem;
+            }
+
+            .project-icon {
+                width: 90px;
+                height: 90px;
+                box-shadow: 
+                    0 15px 40px rgba(0, 0, 0, 0.2),
+                    -6px 6px 0px rgba(26, 115, 232, 0.3),
+                    -12px 12px 0px rgba(52, 168, 83, 0.2);
+            }
+
+            .project-icon i {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .content-card {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .feature-list li {
+                padding: 12px 14px;
+            }
+
+            .feature-list li i {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                font-size: 0.8rem;
+            }
+
+            .back-btn {
+                top: 15px;
+                right: 15px;
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+            }
+
+            /* Reduce shapes on mobile */
+            .shape-1 {
+                width: 150px;
+                height: 150px;
+                top: -50px;
+                right: -30px;
+            }
+
+            .shape-2 {
+                width: 100px;
+                height: 100px;
+                bottom: -30px;
+                left: -20px;
+            }
+
+            .shape-3 {
+                width: 80px;
+                height: 80px;
+                top: 40%;
+                left: 10%;
+            }
+
+            .shape-4 {
+                width: 60px;
+                height: 60px;
+                bottom: 25%;
+                right: 10%;
+            }
+
+            /* Reduce hover transforms on mobile */
+            .feature-list li:hover {
+                transform: translateX(5px);
+            }
+
+            .info-item:hover {
+                transform: translateX(3px);
+            }
+
+            .achievement-list li:hover {
+                transform: translateX(3px);
+            }
+
+            .sidebar-card {
+                padding: 22px;
+            }
+        }
+
+        /* Responsive - Small Mobile */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-section {
+                padding: 90px 15px 50px;
+            }
+
+            .section-title {
+                font-size: 1.15rem;
+            }
+
+            .section-title .title-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 30px 12px;
+            }
+
+            .content-card {
+                padding: 20px 15px;
+            }
+
+            .sidebar-card {
+                padding: 18px 15px;
+            }
+
+            /* Further reduce shapes */
+            .shape-1 {
+                width: 100px;
+                height: 100px;
+                top: -30px;
+                right: -20px;
+            }
+
+            .shape-2 {
+                width: 70px;
+                height: 70px;
+                bottom: -20px;
+                left: -15px;
+            }
+
+            .shape-3,
+            .shape-4 {
+                display: none;
+            }
+
+            /* Remove transforms on very small screens */
+            .feature-list li:hover,
+            .info-item:hover,
+            .achievement-list li:hover {
+                transform: none;
+            }
+
+            .tech-tag:hover {
+                transform: translateY(-2px);
+            }
+
+            /* Tech tags smaller */
+            .tech-stack {
+                gap: 6px;
+            }
+
+            .tech-tag {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+
+            /* Back button smaller */
+            .back-btn {
+                top: 10px;
+                right: 10px;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                gap: 6px;
+            }
+
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .feature-list li {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+
+            .feature-list li i {
+                width: 28px;
+                height: 28px;
+                min-width: 28px;
+                font-size: 0.75rem;
+                margin-right: 10px;
+            }
+
+            .subsection h4 {
+                font-size: 1rem;
+            }
+
+            .overview-text {
+                font-size: 0.95rem;
+            }
+
+            .info-icon {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+            }
+
+            .achievement-list li {
+                font-size: 0.88rem;
+                gap: 10px;
+            }
+
+            .achievement-list li i {
+                width: 26px;
+                height: 26px;
+                min-width: 26px;
+                font-size: 0.7rem;
+            }
+
+            .project-icon {
+                width: 80px;
+                height: 80px;
+                border-radius: 20px;
+            }
+
+            .project-icon i {
+                font-size: 2rem;
+            }
+
+            .hero-content > p {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 360px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .back-btn span {
+                display: none;
+            }
+
+            .back-btn {
+                padding: 10px 12px;
+            }
+
+            .section-title {
+                font-size: 1.05rem;
+            }
+
+            .content-card {
+                padding: 15px 12px;
+            }
+
+            .sidebar-card {
+                padding: 15px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Back Button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Portfolio</span>
+    </a>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="hero-grid"></div>
+
+        <div class="hero-content">
+            <div class="project-icon fade-in">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+
+            <h1>BillPro - Desktop Billing App</h1>
+            <p>A comprehensive, dual-mode invoicing and billing management system developed as a hybrid desktop application. Designed to serve both standard company invoicing and specialized shop invoicing with a full suite of tools for invoice creation, client management, payment tracking, and business analytics.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="project-content">
+            <div class="main-content">
+                <!-- Overview -->
+                <div class="content-card tilt-3d fade-in">
+                    <h2 class="section-title">
+                        <span class="title-icon"><i class="fas fa-info-circle"></i></span>
+                        Project Overview
+                    </h2>
+                    <p class="overview-text">BillPro is a comprehensive, dual-mode invoicing and billing management system developed as a hybrid desktop application. It is designed to serve two distinct user needs: a standard "Company" invoicing system for managing clients and services, and a specialized "Shop" invoicing system for retail or point-of-sale environments. The application provides a full suite of tools for invoice creation, client management, payment tracking, and business analytics. By leveraging pywebview, it packages a powerful Django backend and a dynamic JavaScript frontend into a single, seamless desktop experience, offering the power of a web application with the convenience of a native app.</p>
+                </div>
+
+                <!-- Key Features -->
+                <div class="content-card tilt-3d slide-left delay-1">
+                    <h2 class="section-title">
+                        <span class="title-icon"><i class="fas fa-star"></i></span>
+                        Key Features
+                    </h2>
+                    
+                    <div class="subsection">
+                        <h4>Dual Invoicing Modes</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-building"></i> Separate "Company" invoicing system for B2B client and service management</li>
+                            <li><i class="fas fa-store"></i> Specialized "Shop" invoicing system for retail and point-of-sale environments</li>
+                            <li><i class="fas fa-columns"></i> Tailored workflows and dedicated dashboards for each mode</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Secure User & Session Management</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-user-plus"></i> Complete authentication suite: registration, login, logout</li>
+                            <li><i class="fas fa-lock"></i> "Keep me signed in" feature that persists across app restarts</li>
+                            <li><i class="fas fa-shield-alt"></i> Encrypted credential storage using cryptography library</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Dynamic Invoice Template Designer</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-hand-pointer"></i> Powerful drag-and-drop interface for visual invoice design</li>
+                            <li><i class="fas fa-palette"></i> Customize element positioning: logo, tables, signature, colors, fonts</li>
+                            <li><i class="fas fa-save"></i> Template data serialized as JSON and saved to database</li>
+                            <li><i class="fas fa-eye"></i> Live preview with pixel-perfect PDF rendering</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Advanced Invoice Creation</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-file-invoice"></i> Create invoices based on user-designed custom templates</li>
+                            <li><i class="fas fa-table"></i> Dynamic item table with add/remove line items</li>
+                            <li><i class="fas fa-calculator"></i> Row-specific Formula Builder for custom calculations (e.g., Qty × Rate)</li>
+                            <li><i class="fas fa-rupee-sign"></i> Live calculation of subtotals, taxes, and grand totals</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Client Management (CRM)</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-address-book"></i> Full CRUD functionality for managing company clients</li>
+                            <li><i class="fas fa-star-half-alt"></i> Client relationship scoring system</li>
+                            <li><i class="fas fa-trophy"></i> Top clients leaderboard in analytics dashboard</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Payment & Status Tracking</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-tasks"></i> Update invoice status: Draft, Sent, Paid</li>
+                            <li><i class="fas fa-filter"></i> Automatic categorization in Payments dashboard</li>
+                            <li><i class="fas fa-bell"></i> Automated notifications for overdue invoices</li>
+                            <li><i class="fas fa-desktop"></i> Native desktop notifications for payment reminders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Business Intelligence -->
+                <div class="content-card tilt-3d slide-left delay-2">
+                    <h2 class="section-title">
+                        <span class="title-icon"><i class="fas fa-chart-bar"></i></span>
+                        Business Intelligence Dashboards
+                    </h2>
+                    
+                    <div class="subsection">
+                        <h4>Key Performance Indicators</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-dollar-sign"></i> Total revenue, pending collections, and tax liability tracking</li>
+                            <li><i class="fas fa-chart-line"></i> Interactive, filterable line charts for revenue trends (1M, 6M, 1Y, Custom)</li>
+                            <li><i class="fas fa-bullseye"></i> "Goal vs. Reality" tracker for monthly revenue targets</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Advanced Analytics</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-medal"></i> Leaderboards for "Best Selling Services" and "Top Clients"</li>
+                            <li><i class="fas fa-percentage"></i> Dedicated GST Insights with per-card CGST and SGST filtering</li>
+                            <li><i class="fas fa-exchange-alt"></i> Separate dashboards for Company and Shop modules</li>
+                            <li><i class="fas fa-chart-pie"></i> Data-driven visualizations powered by Chart.js</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Technical Implementation -->
+                <div class="content-card tilt-3d slide-left delay-3">
+                    <h2 class="section-title">
+                        <span class="title-icon"><i class="fas fa-code"></i></span>
+                        Technical Implementation
+                    </h2>
+                    
+                    <div class="subsection">
+                        <h4>Architecture</h4>
+                        <p><strong>Django MVT Pattern:</strong> Built on Django's Model-View-Template architecture ensuring clean separation of concerns between data logic, business logic, and presentation layer.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Database Modeling</h4>
+                        <p><strong>Relational Schema:</strong> Designed using Django ORM to manage Users, Clients, Invoices, InvoiceItems, and InvoiceTemplates. A boolean flag (is_shop_invoice) effectively segregates the two application modes.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Template Customization Engine</h4>
+                        <p>The invoice designer's frontend serializes layout data (element positions, sizes, styles, custom table headers) into a <strong>single JSON object</strong>. This JSON is saved to the template_data field in the InvoiceTemplate model. Preview and PDF generation views parse this JSON to dynamically construct HTML/CSS for pixel-perfect rendering.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Desktop Bridge</h4>
+                        <p>A <strong>Python-to-JavaScript API</strong> was created using pywebview's js_api functionality. This bridge allows the frontend to securely call Python functions, enabling features like saving/clearing encrypted credentials for auto-login without exposing sensitive logic to the client-side.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Data-Driven Analytics</h4>
+                        <p>Business insights views perform <strong>complex database aggregations</strong> (Sum, Count, Avg) using Django ORM. Data is serialized into JSON and passed to the frontend where Chart.js renders interactive visualizations.</p>
+                    </div>
+                </div>
+
+                <!-- Learning Outcomes -->
+                <div class="content-card tilt-3d slide-left delay-4">
+                    <h2 class="section-title">
+                        <span class="title-icon"><i class="fas fa-graduation-cap"></i></span>
+                        Learning Outcomes
+                    </h2>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-server"></i> Mastered Django framework for rapid and secure backend development</li>
+                        <li><i class="fas fa-database"></i> Designed a normalized relational database schema with Django ORM</li>
+                        <li><i class="fas fa-user-lock"></i> Implemented complete user authentication and session management system</li>
+                        <li><i class="fab fa-js-square"></i> Built a complex, stateful drag-and-drop UI with vanilla JavaScript</li>
+                        <li><i class="fas fa-desktop"></i> Integrated web application into hybrid desktop environment with pywebview</li>
+                        <li><i class="fas fa-link"></i> Created secure API bridge for Python-JavaScript communication</li>
+                        <li><i class="fas fa-chart-area"></i> Developed data-driven analytics dashboards with Chart.js</li>
+                        <li><i class="fas fa-file-pdf"></i> Implemented HTML-to-PDF rendering pipeline with xhtml2pdf</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Project Info -->
+                <div class="sidebar-card tilt-3d slide-right delay-1">
+                    <h3 class="sidebar-title"><i class="fas fa-info-circle"></i> Project Info</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="info-content">
+                                <strong>Type</strong>
+                                <span>Desktop + Web App</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="info-content">
+                                <strong>Role</strong>
+                                <span>Full-Stack Developer</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="info-content">
+                                <strong>Status</strong>
+                                <span>Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Technologies -->
+                <div class="sidebar-card tilt-3d slide-right delay-2">
+                    <h3 class="sidebar-title"><i class="fas fa-server"></i> Backend Technologies</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">SQLite 3</span>
+                        <span class="tech-tag">Django ORM</span>
+                        <span class="tech-tag">xhtml2pdf</span>
+                    </div>
+                </div>
+
+                <!-- Frontend Technologies -->
+                <div class="sidebar-card tilt-3d slide-right delay-2">
+                    <h3 class="sidebar-title"><i class="fas fa-palette"></i> Frontend Technologies</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript ES6+</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">Flatpickr</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Integration -->
+                <div class="sidebar-card tilt-3d slide-right delay-3">
+                    <h3 class="sidebar-title"><i class="fas fa-desktop"></i> Desktop Integration</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">pywebview</span>
+                        <span class="tech-tag">cryptography</span>
+                        <span class="tech-tag">js_api Bridge</span>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="sidebar-card tilt-3d slide-right delay-3">
+                    <h3 class="sidebar-title"><i class="fas fa-shield-alt"></i> Security</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Django Auth</span>
+                        <span class="tech-tag">CSRF Protection</span>
+                        <span class="tech-tag">Encrypted Storage</span>
+                    </div>
+                </div>
+
+                <!-- Key Achievements -->
+                <div class="sidebar-card tilt-3d slide-right delay-4">
+                    <h3 class="sidebar-title"><i class="fas fa-trophy"></i> Key Achievements</h3>
+                    <ul class="achievement-list">
+                        <li><i class="fas fa-layer-group"></i> Dual-mode invoicing system serving both B2B and B2C use cases</li>
+                        <li><i class="fas fa-hand-pointer"></i> Intuitive drag-and-drop invoice template designer</li>
+                        <li><i class="fas fa-laptop"></i> Robust hybrid desktop app with auto-login and native notifications</li>
+                        <li><i class="fas fa-chart-bar"></i> Comprehensive BI dashboard with interactive data visualizations</li>
+                    </ul>
+                </div>
+
+                <!-- Application Modes -->
+                <div class="sidebar-card tilt-3d slide-right delay-5">
+                    <h3 class="sidebar-title"><i class="fas fa-exchange-alt"></i> Application Modes</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-building"></i></div>
+                            <div class="info-content">
+                                <strong>Mode 1</strong>
+                                <span>Company Invoicing</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-store"></i></div>
+                            <div class="info-content">
+                                <strong>Mode 2</strong>
+                                <span>Shop Invoicing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Back button scroll style change
+        const backBtn = document.querySelector('.back-btn');
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backBtn.classList.add('scrolled');
+            } else {
+                backBtn.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right');
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Check if device supports hover (not touch)
+            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            // 3D Tilt Effect - Only on non-touch devices
+            if (!isTouch) {
+                const tiltCards = document.querySelectorAll('.tilt-3d');
+                
+                tiltCards.forEach(card => {
+                    let rafId = null;
+
+                    card.addEventListener('mouseenter', () => {
+                        card.classList.remove('tilt-reset');
+                        card.classList.add('tilting');
+                    });
+
+                    card.addEventListener('mousemove', (e) => {
+                        if (rafId) cancelAnimationFrame(rafId);
+
+                        rafId = requestAnimationFrame(() => {
+                            const rect = card.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            const centerX = rect.width / 2;
+                            const centerY = rect.height / 2;
+                            const rotateX = (y - centerY) / centerY * -6;
+                            const rotateY = (x - centerX) / centerX * 6;
+
+                            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px) scale(1.01)`;
+                            card.style.boxShadow = `
+                                ${-rotateY * 2}px ${rotateX * 2}px 40px rgba(0, 0, 0, 0.1),
+                                0 10px 30px rgba(0, 0, 0, 0.06)
+                            `;
+
+                            rafId = null;
+                        });
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        if (rafId) {
+                            cancelAnimationFrame(rafId);
+                            rafId = null;
+                        }
+                        card.classList.remove('tilting');
+                        card.classList.add('tilt-reset');
+                        card.style.transform = '';
+                        card.style.boxShadow = '';
+                    });
+                });
+
+                // Hero Parallax - Only on non-touch devices
+                const heroSection = document.querySelector('.hero-section');
+                const shapes = document.querySelectorAll('.hero-section .shape');
+
+                heroSection.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+                    shapes.forEach((shape, i) => {
+                        const speed = (i + 1) * 6;
+                        shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                    });
+                });
+
+                heroSection.addEventListener('mouseleave', () => {
+                    shapes.forEach(shape => {
+                        shape.style.transform = '';
+                    });
+                });
+            }
+
+            // Create Hero Particles - Reduce count on mobile
+            const hero = document.querySelector('.hero-section');
+            const particleCount = isTouch ? 8 : 15;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                const size = (Math.random() * 4 + 2) + 'px';
+                particle.style.width = size;
+                particle.style.height = size;
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.animation = `shapeFloat${Math.ceil(Math.random() * 4)} ${Math.random() * 8 + 6}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                hero.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>
